@@ -1,0 +1,9 @@
+<%= simple_form_for(pet) do |f| %>
+  <!-- [...] -->
+  <%= f.input :photo, as: :file %>
+  <!-- [...] -->
+<% end %>
+
+
+<%# Determine whether photo is has many or has one attached photo
+Then see "cloudinary" in your Rails: Hosting Image Upload %>
