@@ -12,20 +12,36 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-require 'faker'
 
-Pet.delete_all
-User.delete_all
-Meetup.delete_all
+require "open-uri"
+require 'json'
+require 'faker'
+# buffer = Cloudinary::Api.resources.to_a[0][1]
+
+
+puts "Deleting database"
+
+Pet.destroy_all
+User.destroy_all
+Meetup.destroy_all
 
 puts "Creating users"
 
-user_one = User.create!(first_name: "Leo", last_name: "Biggums", phone: "111111111", location: "123 Sesame Street, New York, NY, 10010", email: "leo@gmail.com", password: 123456, notes: "Found this lost dog near the Empire State Building")
-
+user_1 = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, phone: Faker::PhoneNumber.area_code, location: Faker::Address.state_abbr, email: Faker::Internet.email, password: 123456, notes: "Found near the Empire State Building")
+user_2 = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, phone: Faker::PhoneNumber.area_code, location: "NJ", email: Faker::Internet.email, password: 123456, notes: "Found near the Circle K.")
+user_3 = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, phone: Faker::PhoneNumber.area_code, location: Faker::Address.state_abbr, email: Faker::Internet.email, password: 123456, notes: "Found in the woods")
+user_4 = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, phone: Faker::PhoneNumber.area_code, location: Faker::Address.state_abbr, email: Faker::Internet.email, password: 123456, notes: "Roaming in the park")
+user_5 = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, phone: Faker::PhoneNumber.area_code, location: Faker::Address.state_abbr, email: Faker::Internet.email, password: 123456, notes: "Very friendly and looking for home.  Found near the bank.")
+user_6 = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, phone: Faker::PhoneNumber.area_code, location: "AL", email: Faker::Internet.email, password: 123456, notes: "Ran in front of my car near Highway 72.  I'm happy I saved it!")
+user_7 = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, phone: Faker::PhoneNumber.area_code, location: Faker::Address.state_abbr, email: Faker::Internet.email, password: 123456, notes: "Very cute and vocal.  Was greeting people at the gas station.")
+user_8 = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, phone: Faker::PhoneNumber.area_code, location: "VA", email: Faker::Internet.email, password: 123456, notes: "Followed us on our hiking trail in the Shenandoah Mountains.")
+user_9 = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, phone: Faker::PhoneNumber.area_code, location: Faker::Address.state_abbr, email: Faker::Internet.email, password: 123456, notes: "Found on my doorstep!!!")
+user_10 = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, phone: Faker::PhoneNumber.area_code, location: Faker::Address.state_abbr, email: Faker::Internet.email, password: 123456, notes: "Walked outside and found a lost pet snuggling under my car!")
 
 puts "Creating pets"
 
-pet_one = Pet.create!(species: "dog", location: "NY", date_found: "1/11/2011", has_id: true, description: "beautiful dog who is looking for the owner", status: "still missing", sex: "Female" )
+pet_1 = Pet.create(species: "dog", location: "NY", date_found: Faker::Date.between(from: 120.days.ago, to: Date.today), has_id: true, latitude: Faker::Address.latitude, longitude: Faker::Address.longitude, custodian_id: user_1, sex: "Undetermined")
+
 
 puts "#{User.count} user(s) and #{Pet.count} pet(s)"
 

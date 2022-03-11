@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.3'
 
+gem 'faker'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.6'
 # Use postgresql as the database for Active Record
@@ -34,6 +35,8 @@ gem 'devise'
 gem 'autoprefixer-rails', '10.2.5'
 gem 'font-awesome-sass'
 gem 'simple_form'
+gem "turbolinks_render"
+gem "rqrcode"
 
 
 group :development, :test do  gem 'pry-byebug'
