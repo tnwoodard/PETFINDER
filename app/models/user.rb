@@ -12,6 +12,6 @@ class User < ApplicationRecord
   has_many :pets_as_owner, class_name: "Pet", foreign_key: :owner_id
   has_many :pets_as_custodian, class_name: "Pet", foreign_key: :custodian_id
   has_many :meetups, through: :pets, dependent: :destroy
-  has_many :messages, through: :pets
+
 
 end

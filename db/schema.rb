@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_01_200147) do
+ActiveRecord::Schema.define(version: 2022_03_04_104606) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,25 +44,17 @@ ActiveRecord::Schema.define(version: 2022_03_01_200147) do
   end
 
   create_table "meetups", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "pet_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "owner_id"
+    t.bigint "custodian_id"
+    t.bigint "pet_id"
+    t.index ["custodian_id"], name: "index_meetups_on_custodian_id"
+    t.index ["owner_id"], name: "index_meetups_on_owner_id"
     t.index ["pet_id"], name: "index_meetups_on_pet_id"
-    t.index ["user_id"], name: "index_meetups_on_user_id"
-  end
-
-  create_table "messages", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "pet_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["pet_id"], name: "index_messages_on_pet_id"
-    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "pets", force: :cascade do |t|
-    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "species"
@@ -74,7 +66,13 @@ ActiveRecord::Schema.define(version: 2022_03_01_200147) do
     t.date "date_found"
     t.boolean "has_id"
     t.string "status"
-    t.index ["user_id"], name: "index_pets_on_user_id"
+    t.string "sex"
+    t.float "latitude"
+    t.float "longitude"
+    t.bigint "owner_id"
+    t.bigint "custodian_id"
+    t.index ["custodian_id"], name: "index_pets_on_custodian_id"
+    t.index ["owner_id"], name: "index_pets_on_owner_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -91,15 +89,17 @@ ActiveRecord::Schema.define(version: 2022_03_01_200147) do
     t.string "location"
     t.date "date"
     t.text "notes"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "meetups", "pets"
-  add_foreign_key "meetups", "users"
-  add_foreign_key "messages", "pets"
-  add_foreign_key "messages", "users"
-  add_foreign_key "pets", "users"
+  add_foreign_key "meetups", "users", column: "custodian_id"
+  add_foreign_key "meetups", "users", column: "owner_id"
+  add_foreign_key "meetups", "users", column: "pet_id"
+  add_foreign_key "pets", "users", column: "custodian_id"
+  add_foreign_key "pets", "users", column: "owner_id"
 end
