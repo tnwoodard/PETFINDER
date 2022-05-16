@@ -36,7 +36,7 @@ gem 'autoprefixer-rails', '10.2.5'
 gem 'font-awesome-sass'
 gem 'simple_form'
 gem "turbolinks_render"
-gem "rqrcode"
+gem "react-rails"
 
 
 group :development, :test do  gem 'pry-byebug'
