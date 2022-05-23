@@ -25,16 +25,16 @@ User.destroy_all
 
 puts "Creating users..."
 
-user_1 = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, phone: Faker::PhoneNumber.area_code, location: "NY", email: Faker::Internet.email, password: 123456, notes: "Found near the Empire State Building")
-user_2 = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, phone: Faker::PhoneNumber.area_code, location: "NJ", email: Faker::Internet.email, password: 123456, notes: "Found near the Circle K.")
-user_3 = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, phone: Faker::PhoneNumber.area_code, location: "PA", email: Faker::Internet.email, password: 123456, notes: "Found in the woods")
-user_4 = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, phone: Faker::PhoneNumber.area_code, location: "PA", email: Faker::Internet.email, password: 123456, notes: "Roaming in the park")
-user_5 = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, phone: Faker::PhoneNumber.area_code, location: "PA", email: Faker::Internet.email, password: 123456, notes: "Very friendly and looking for home.  Found near the bank.")
-user_6 = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, phone: Faker::PhoneNumber.area_code, location: "AL", email: Faker::Internet.email, password: 123456, notes: "Ran in front of my car near Highway 72.  I'm happy I saved it!")
-user_7 = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, phone: Faker::PhoneNumber.area_code, location: "MS", email: Faker::Internet.email, password: 123456, notes: "Very cute and vocal.  Was greeting people at the gas station.")
-user_8 = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, phone: Faker::PhoneNumber.area_code, location: "VA", email: Faker::Internet.email, password: 123456, notes: "Followed us on our hiking trail in the Shenandoah Mountains.")
-user_9 = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, phone: Faker::PhoneNumber.area_code, location: "PA", email: Faker::Internet.email, password: 123456, notes: "Found on my doorstep!!!")
-user_10 = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, phone: Faker::PhoneNumber.area_code, location: "PA", email: Faker::Internet.email, password: 123456, notes: "Walked outside and found a lost pet snuggling under my car!")
+user_1 = User.create!(first_name: "Leo", last_name: "Devlin", phone: Faker::PhoneNumber.area_code, location: "NY", email: "leo@gmail.com", password: 123456, notes: "Found near the Empire State Building")
+user_2 = User.create!(first_name: "Luna", last_name: "Jackson", phone: Faker::PhoneNumber.area_code, location: "NJ", email: "luna@gmail.com", password: 123456, notes: "Found near the Circle K.")
+user_3 = User.create!(first_name: "Tempestt", last_name: "Woodson", phone: Faker::PhoneNumber.area_code, location: "PA", email: "temp@gmail.com", password: 123456, notes: "Found in the woods")
+user_4 = User.create!(first_name: "Kamilyah", last_name: "Woods", phone: Faker::PhoneNumber.area_code, location: "PA", email: "kam@gmail.com", password: 123456, notes: "Roaming in the park")
+user_5 = User.create!(first_name: "Teddy", last_name: "Smith", phone: Faker::PhoneNumber.area_code, location: "PA", email: "ted@gmail.com", password: 123456, notes: "Very friendly and looking for home.  Found near the bank.")
+user_6 = User.create!(first_name: "Pam", last_name: "Anderson", phone: Faker::PhoneNumber.area_code, location: "AL", email: "pam@gmail.com", password: 123456, notes: "Ran in front of my car near Highway 72.  I'm happy I saved it!")
+user_7 = User.create!(first_name: "Amy", last_name: "Jones", phone: Faker::PhoneNumber.area_code, location: "MS", email: "amy@gmail.com", password: 123456, notes: "Very cute and vocal.  Was greeting people at the gas station.")
+user_8 = User.create!(first_name: "Tanya", last_name: "Russell", phone: Faker::PhoneNumber.area_code, location: "VA", email: "tan@gmail.com", password: 123456, notes: "Followed us on our hiking trail in the Shenandoah Mountains.")
+user_9 = User.create!(first_name: "Bryon", last_name: "Weather", phone: Faker::PhoneNumber.area_code, location: "PA", email: "bry@gmail.com", password: 123456, notes: "Found on my doorstep!!!")
+user_10 = User.create!(first_name: "Raymond", last_name: "Wooddall", phone: Faker::PhoneNumber.area_code, location: "PA", email: "ray@gmail.com", password: 123456, notes: "Walked outside and found a lost pet snuggling under my car!")
 
 puts "Creating pets..."
 
@@ -49,8 +49,8 @@ pet_8 = Pet.create!(species: "dog", name: "", age: rand(1..12), color: "black", 
 
 puts "Creating meetups..."
 
-meetup_1 = Meetup.create!(owner: User.all.sample, custodian: User.all.sample, pet_id: Pet.all.sample)
-meetup_2 = Meetup.create!(owner: User.all.sample, custodian: User.all.sample, pet_id: Pet.all.sample)
+meetup_1 = Meetup.create!(pet_id: pet_6)
+meetup_2 = Meetup.create!(pet_id: pet_7)
 
 
 puts "Created #{User.count} user(s), #{Pet.count} pet(s) and #{Meetup.count} meetup(s)."

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_11_145912) do
+ActiveRecord::Schema.define(version: 2022_05_23_175834) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,11 +46,7 @@ ActiveRecord::Schema.define(version: 2022_03_11_145912) do
   create_table "meetups", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "owner_id"
-    t.bigint "custodian_id"
     t.bigint "pet_id"
-    t.index ["custodian_id"], name: "index_meetups_on_custodian_id"
-    t.index ["owner_id"], name: "index_meetups_on_owner_id"
     t.index ["pet_id"], name: "index_meetups_on_pet_id"
   end
 
@@ -95,8 +91,6 @@ ActiveRecord::Schema.define(version: 2022_03_11_145912) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "meetups", "users", column: "custodian_id"
-  add_foreign_key "meetups", "users", column: "owner_id"
   add_foreign_key "meetups", "users", column: "pet_id"
   add_foreign_key "pets", "users", column: "custodian_id"
   add_foreign_key "pets", "users", column: "owner_id"

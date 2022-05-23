@@ -1,23 +1,16 @@
 Rails.application.routes.draw do
-  get 'meetups/index'
-  get 'meetups/new'
-  get 'meetups/create'
-  get 'meetups/show'
-  get 'pets/index'
-  get 'pets/new'
-  get 'pets/create'
-  get 'pets/show'
-  get 'pets/destroy'
   devise_for :users
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resources :pets
-  resources :users do
-    resources :meetups
+  resources :pets, only: [:create, :show, :destroy] do
+    resources :meetups, only: [:index, :show, :new, :create]
   end
-
+  resources :pets, only: [:index, :new]
   get 'custodians/:id', to: 'users#custodians', as: 'custodians'
   get 'owners/:id', to: 'users#owners', as: 'owners'
   get 'profile', to: 'users#profile', as: 'profile'
-  get 'meetups', to: 'users#meetups', as: 'meetups'
+  get 'my_meetups', to: 'users#my_meetups', as: 'my_meetups'
+
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
 end
