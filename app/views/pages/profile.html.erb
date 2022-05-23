@@ -1,32 +1,32 @@
 <h1>Welcome to your profile page, <%= @user.first_name %></h1>
 
-<a href=<%= new_artwork_path %>>Create a new artwork</a>
+<a href=<%= new_pet_path %>>Add a Pet to the Directory</a>
 
-<h2>All your artwork</h2>
+<h2>All of your pets</h2>
 
-<% @user.artworks_as_artist.each do |artwork| %>
-  <p><%= artwork.title%> -- <%= artwork.price %> <a href=<%= artwork_path(artwork) %>>See this artwork</a></p>
-  <% if artwork.photo.present? %>
-    <%= cl_image_tag artwork.photo.key, height: 300, width: 400, crop: :fill %>
+<% @user.pets_as_custodian.each do |pet| %>
+  <p><%= pet.species%> -- <%= pet.age %>years old<a href=<%= pet_path(pet) %>>Get more details</a></p>
+  <% if pet.photo.present? %>
+    <%= cl_image_tag pet.photo.key, height: 300, width: 400, crop: :fill %>
   <% end %>
 <% end %>
 
-<h2>Artwork you've purchased</h2>
+<h2>All of your reunification meetups</h2>
 
-  <% @user.artworks_as_buyer.each do |artwork| %>
-  <p><%= artwork.title%> -- <%= artwork.price %><a href=<%= artwork_path(artwork) %>>See this artwork</a></p>
-  <% if artwork.photo.present? %>
-    <%= cl_image_tag artwork.photo.key, height: 300, width: 400, crop: :fill %>
+  <% @user.meetups_as_custodian.each do |pet| %>
+  <p><%= pet.species%> -- <%= pet.age %>years old<a href=<%= pet_path(pet) %>>See this pet</a></p>
+  <% if pet.photo.present? %>
+    <%= cl_image_tag pet.photo.key, height: 300, width: 400, crop: :fill %>
   <% end %>
 <% end %>
 
-<h2>Artwork you've sold</h2>
+<%# <h2>pet you've sold</h2>
 
-<% @user.artworks_as_artist.each do |artwork| %>
-  <% if artwork.buyer_id != current_user.id %>
-    <p><%= artwork.title%> -- <%= artwork.price %><a href=<%= artwork_path(artwork) %>>See this artwork</a></p>
-    <% if artwork.photo.present? %>
-      <%= cl_image_tag artwork.photo.key, height: 300, width: 400, crop: :fill %>
-    <% end %>
-  <% end %>
-<% end %>
+<% @user.pets_as_artist.each do |pet| %>
+  <%# <% if pet.buyer_id != current_user.id %>
+    <%# <p><%= pet.title%> -- <%= pet.price %><a href=<%= pet_path(pet) %>>See this pet</a></p> %>
+    <%# <% if pet.photo.present? %> %>
+      <%# <%= cl_image_tag pet.photo.key, height: 300, width: 400, crop: :fill %> %>
+    <%# <% end %> %>
+  <%# <% end %> %>
+<%# <% end %> %> %> %>

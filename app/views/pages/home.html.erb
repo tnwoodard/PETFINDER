@@ -1,2 +1,30 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>Welcome to <em>Petfinder!</h1>
+<div class="home-search text-center pt-3">
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 mx-auto my-5">
+      <h6>SEARCH DIRECTORY</h6>
+      <p>Search our directory for all pets in our directory.</p>
+        <%= link_to "SEARCH ALL PETS", pets_path, class: "btn btn-primary btn-lg w-50 mb-4" %>
+        <%#
+        <form novalidate="novalidate" class="simple_form search" action="/" accept-charset="UTF-8" method="get">
+          <div class="search-form-control form-group">
+            <input class="form-control string required" type="text" name="search[query]" id="search_query">
+            <button name="button" type="submit" class="btn btn-flat">
+              <i class="fas fa-search"></i></button> %>
+      </div>
+    </form>
+  </div>
+</div>
+</div>
+</div>
+<div class="container">
+  <div class="d-flex align-items-center my-5">
+    <div class="col-sm-12 col-md-6 paintstroke d-none d-lg-block mb-5">
+      <h6>LIST A PET</h6>
+
+      <p>Did you find a lost pet? Please list it in our database.</p>
+      <%= link_to "LIST A PET", new_pet_path, class: "btn btn-primary btn-lg w-50 mb-4" %>
+    </div>
+</div>
