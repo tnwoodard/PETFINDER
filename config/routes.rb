@@ -3,9 +3,11 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :pets, only: [:create, :show, :destroy] do
-    resources :meetups, only: [:index, :show, :new, :create]
+    # resources :meetups, only: [:index, :show, :new, :create]
   end
   resources :pets, only: [:index, :new]
+  resources :meetups, only: [:index, :show, :new, :create]
+
   get 'custodians/:id', to: 'users#custodians', as: 'custodians'
   get 'owners/:id', to: 'users#owners', as: 'owners'
   get 'profile', to: 'users#profile', as: 'profile'
